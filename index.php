@@ -21,7 +21,7 @@ $numrow=mysqli_num_rows($result);
 
 echo "<br>".$numrow." Records<br>";
 for($i=0;$i<ceil($numrow/$per_page);$i++)
-    echo "<a href='show_product.php?page=$i'>[".($i+1)."]</a>";
+    echo "<a href='index.php?page=$i'>[".($i+1)."]</a>";
 $sql="SELECT * FROM product LIMIT $start_page,$per_page";
 $result=mysqli_query($con,$sql);
 if(mysqli_num_rows($result)>0){
@@ -37,8 +37,8 @@ if(mysqli_num_rows($result)>0){
         $next = 9;
     if($previous < 0)
         $previous = 0;
-    echo "<a href='show_product.php?page=$previous'>[< (Previous)]</a>";
-    echo "<a href='show_product.php?page=$next'>[> (Next)]</a>";
+    echo "<a href='index.php?page=$previous'>[< (Previous)]</a>";
+    echo "<a href='index.php?page=$next'>[> (Next)]</a>";
 }else{
     echo "0 results";
 }
