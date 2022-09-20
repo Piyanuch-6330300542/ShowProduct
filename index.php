@@ -10,7 +10,7 @@ else $start_page=0;
 $con=mysqli_connect($servername,$username,$password,$dbname);
 if(!$con) die("Connnect mysql database fail!!".mysqli_connect_error());
 echo "Connect mysql successfully!";
-$sql="SELECT * FROM product2";
+$sql="SELECT * FROM product";
 $result=mysqli_query($con,$sql);
 $numrow=mysqli_num_rows($result);
 
