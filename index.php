@@ -1,13 +1,18 @@
 <?php
 session_start();
-$servername="localhost";
-$username="root";
-$password="dear060344";
-$dbname="shop";
+$cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+$cleardb_server = $cleardb_url["host"];
+$cleardb_username = $cleardb_url["user"];
+$cleardb_password = $cleardb_url["pass"];
+$cleardb_db = substr($cleardb_url["path"],1);
+$active_group = 'default';
+$query_builder = TRUE;
+// Connect to DB
+$con = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
 $per_page=5;
 if(isset($_GET["page"])) $start_page=$_GET["page"]*$per_page;
 else $start_page=0;
-$con=mysqli_connect($servername,$username,$password,$dbname);
+
 if(!$con) die("Connnect mysql database fail!!".mysqli_connect_error());
 echo "Connect mysql successfully!";
 $sql="SELECT * FROM product";
